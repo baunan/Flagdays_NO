@@ -49,11 +49,11 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 
 class FlagDaysSensor(SensorEntity):
-    def __init__(self, hass, coordinator, flagDays_DK) -> None:
+    def __init__(self, hass, coordinator, flagDays_NO) -> None:
         self._hass = hass
         self._coordinator = coordinator
-        self._flagDays_DK = flagDays_DK
-        self._nextFlagDay = self._flagDays_DK.getNextFlagDay()
+        self._flagDays_NO = flagDays_NO
+        self._nextFlagDay = self._flagDays_NO.getNextFlagDay()
         self._name = DOMAIN
         self._icon = "mdi:flag"
 
