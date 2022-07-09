@@ -1,11 +1,11 @@
 {
-    "domain": "flagdays_dk",
-    "name": "FlagDays DK",
-    "documentation": "https://github.com/J-Lindvig/Flagdays_DK",
-    "issue_tracker": "https://github.com/J-Lindvig/Flagdays_DK/issues",
+    "domain": "flagdays_no",
+    "name": "FlagDays NO",
+    "documentation": "https://github.com/baunan/Flagdays_NO",
+    "issue_tracker": "https://github.com/baunan/Flagdays_NO/issues",
     "dependencies": [],
-    "codeowners": ["@J-Lindvig"],
+    "codeowners": ["@BAUNAN"],
     "requirements": ["beautifulsoup4", "html.parser"],
     "iot_class": "cloud_polling",
-    "version": "2.2"
+    "version": "0.1"
 }
