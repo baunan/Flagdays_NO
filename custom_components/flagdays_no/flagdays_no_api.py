@@ -17,32 +17,32 @@ COMMONWEALTH_FLAGS = {
     "grønland": "erfalasorput",
     "færø": "merkið",
 }
-DK_DATE_FORMAT = "%d-%m-%Y"
-HALF_MAST_DAYS = ["besættelsesdagen", "langfredag"]
+NO_DATE_FORMAT = "%d-%m-%Y"
+HALF_MAST_DAYS = ["begravelsesdagen"]
 HALF_MAST_ALL_DAY_STR = "hele dagen"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Platform; Security; OS-or-CPU; Localization; rv:1.4) Gecko/20030624 Netscape/7.1 (ax)"
 }
-MONTHS_DK = [
+MONTHS_NO = [
     "januar",
     "februar",
-    "marts",
+    "mars",
     "april",
-    "maj",
+    "mai",
     "juni",
     "juli",
     "august",
     "september",
     "oktober",
     "november",
-    "december",
+    "desember",
 ]
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 _LOGGER = logging.getLogger(__name__)
 
 
-class flagDays_DK:
+class flagDays_NO:
     def __init__(
         self, flags, coordinates, timeOffset, privateFlagDays=[], hidePast=True
     ):
@@ -80,10 +80,10 @@ class flagDays_DK:
 
             dateList = privateFlagDay["date"].split("-")
             if len(dateList) > 2:
-                d1 = datetime.strptime(privateFlagDay["date"], DK_DATE_FORMAT)
+                d1 = datetime.strptime(privateFlagDay["date"], NO_DATE_FORMAT)
                 d2 = datetime.strptime(
                     "-".join([dateList[0], dateList[1], self._year]),
-                    DK_DATE_FORMAT,
+                    NO_DATE_FORMAT,
                 )
                 name = (
                     aFlagDay.getName()
@@ -104,12 +104,12 @@ class flagDays_DK:
                 if len(endDateList) < 3:
                     endDateList.append(self._year)
                 endDateObj = datetime.strptime(
-                    "-".join(endDateList), DK_DATE_FORMAT
+                    "-".join(endDateList), NO_DATE_FORMAT
                 ) + timedelta(days=1)
-                startDateObj = datetime.strptime("-".join(dateList), DK_DATE_FORMAT)
+                startDateObj = datetime.strptime("-".join(dateList), NO_DATE_FORMAT)
 
                 if startDateObj <= self._todayObj <= endDateObj:
-                    dateList = datetime.strftime(self._todayObj, DK_DATE_FORMAT).split(
+                    dateList = datetime.strftime(self._todayObj, NO_DATE_FORMAT).split(
                         "-"
                     )
 
@@ -250,7 +250,7 @@ class flagDay:
         self._dateTable["year"] = dateList[-1]
         self._dateTable["date"] = dateList[0]
         self._dateTable["monthNo"] = str(dateList[1]).lstrip("0")
-        self._dateTable["monthName"] = MONTHS_DK[int(self._dateTable["monthNo"]) - 1]
+        self._dateTable["monthName"] = MONTHS_NO[int(self._dateTable["monthNo"]) - 1]
         self._dateTable["dateStr"] = "-".join(
             [
                 self._dateTable["date"],
@@ -337,8 +337,8 @@ class flagDay:
 
     def _getMonthNo(self, monthName, returnAsString=True):
         monthName = monthName.lower().strip()
-        if monthName in MONTHS_DK:
-            monthNo = MONTHS_DK.index(monthName) + 1
+        if monthName in MONTHS_NO:
+            monthNo = MONTHS_NO.index(monthName) + 1
             if returnAsString:
                 return str(monthNo)
             else:
