@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from .flagdays_dk_api import flagDays_DK
+from .flagdays_no_api import flagDays_NO
 
 from homeassistant.const import (
     CONF_LATITUDE,
