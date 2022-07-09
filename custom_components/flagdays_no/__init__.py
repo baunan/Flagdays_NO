@@ -55,7 +55,7 @@ async def async_setup(hass, config):
         _LOGGER.debug(f"Added { len(privateFlagDays) } private flagdays")
 
     hass.data[DOMAIN] = {
-        CONF_CLIENT: flagDays_DK(
+        CONF_CLIENT: flagDays_NO(
             flags, coordinates, time_offset, privateFlagDays, hidePast
         )
     }
